@@ -79,11 +79,29 @@ namespace Journey.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Erro desconhecido.
+        /// </summary>
+        public static string ERRO_DESCONHECIDO {
+            get {
+                return ResourceManager.GetString("ERRO_DESCONHECIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O Nome não pode ser vazio..
         /// </summary>
         public static string NOME_VAZIO {
             get {
                 return ResourceManager.GetString("NOME_VAZIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Viagem não encontrada.
+        /// </summary>
+        public static string VIAGEM_NAO_ENCONTRADA {
+            get {
+                return ResourceManager.GetString("VIAGEM_NAO_ENCONTRADA", resourceCulture);
             }
         }
     }

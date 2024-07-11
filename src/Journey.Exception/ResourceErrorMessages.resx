@@ -123,7 +123,13 @@
   <data name="DATA_TERMINO_VIAGEM_POSTERIOR_DATA_INICIO" xml:space="preserve">
     <value>A Data de término da viagem deve ser igual ou posterior à data de início.</value>
   </data>
+  <data name="ERRO_DESCONHECIDO" xml:space="preserve">
+    <value>Erro desconhecido</value>
+  </data>
   <data name="NOME_VAZIO" xml:space="preserve">
     <value>O Nome não pode ser vazio.</value>
+  </data>
+  <data name="VIAGEM_NAO_ENCONTRADA" xml:space="preserve">
+    <value>Viagem não encontrada</value>
   </data>
 </root>
