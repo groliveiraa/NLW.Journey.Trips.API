@@ -14,6 +14,11 @@ namespace Journey.Api.Controllers
     [ApiController]
     public class TripsController : ControllerBase
     {
+        /// <summary>
+        /// Cadastrar uma viagem
+        /// </summary>
+        /// <param name="requestTrip">Informações da viagem</param>
+        /// <returns>Viagem cadastrada</returns>
         [HttpPost]
         [Route("adicionar-trip")]
         [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
@@ -27,6 +32,10 @@ namespace Journey.Api.Controllers
             return Created(string.Empty, response);
         }
 
+        /// <summary>
+        /// Obter todas as viagens
+        /// </summary>
+        /// <returns>Coleção de viagens</returns>
         [HttpGet]
         [Route("consulta-trips")]
         [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
@@ -40,6 +49,11 @@ namespace Journey.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obter uma viagem especifica
+        /// </summary>
+        /// <param name="id">Identificador da viagem</param>
+        /// <returns>Informações da viagem</returns>
         [HttpGet]
         [Route("consulta-trip/{id}")]
         [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status200OK)]
@@ -53,6 +67,11 @@ namespace Journey.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Deletar uma viagem especifica
+        /// </summary>
+        /// <param name="id">Identificador da viagem</param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("deletar-trip/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

@@ -1,6 +1,9 @@
 ﻿using Journey.Application.UseCases.Activities.DeleteActivities;
+using Journey.Application.UseCases.Activities.GetAllActivities;
+using Journey.Application.UseCases.Activities.GetIdActivies;
 using Journey.Application.UseCases.Activities.Register;
 using Journey.Application.UseCases.Activities.UpdateActivities;
+using Journey.Application.UseCases.Trips.GetAllTrips;
 using Journey.Application.UseCases.Trips.Register;
 using Journey.Communication.Requests;
 using Journey.Communication.Responses;
@@ -13,6 +16,12 @@ namespace Journey.Api.Controllers
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
+        /// <summary>
+        /// Cadastrar uma atividade
+        /// </summary>
+        /// <param name="tripId">Identificador da viagem</param>
+        /// <param name="requestActivity">Informações da atividade</param>
+        /// <returns>Atividade cadastrada</returns>
         [HttpPost]
         [Route("{tripId}/adicionar-activity")]
         [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
@@ -27,6 +36,47 @@ namespace Journey.Api.Controllers
             return Created(string.Empty, response);
         }
 
+        /// <summary>
+        /// Obter todas as atividades programadas
+        /// </summary>
+        /// <returns>Coleção de atividades programadas</returns>
+        [HttpGet]
+        [Route("consulta-activities")]
+        [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public IActionResult GetAllActivity()
+        {
+            var useCase = new GetAllActivitiesUseCase();
+
+            var result = useCase.Execute();
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Obter uma atividade especifica
+        /// </summary>
+        /// <param name="id">Identificador da atividade</param>
+        /// <returns>Informações da atividade</returns>
+        [HttpGet]
+        [Route("consulta-activity/{id}")]
+        [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public IActionResult GetIdActivity([FromRoute] Guid id)
+        {
+            var useCase = new GetIdActivitiesUseCase();
+
+            var result = useCase.Execute(id);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Atualizar uma atividade especifica
+        /// </summary>
+        /// <param name="tripId">Identificador da viagem</param>
+        /// <param name="activityId">Identificador da atividade</param>
+        /// <returns></returns>
         [HttpPut]
         [Route("{tripId}/atualizar-activity/{activityId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -40,6 +90,12 @@ namespace Journey.Api.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletar uma atividade especifica
+        /// </summary>
+        /// <param name="tripId">Identificador da viagem</param>
+        /// <param name="activityId">Identificador da atividade</param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("{tripId}/deletar-activity/{activityId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
