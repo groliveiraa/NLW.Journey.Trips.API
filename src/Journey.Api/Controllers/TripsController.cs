@@ -2,10 +2,9 @@
 using Journey.Application.UseCases.Trips.GetAllTrips;
 using Journey.Application.UseCases.Trips.GetIdTrips;
 using Journey.Application.UseCases.Trips.Register;
+using Journey.Application.UseCases.Trips.UpdateTrip;
 using Journey.Communication.Requests;
 using Journey.Communication.Responses;
-using Journey.Exception.ExceptionsBase;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Journey.Api.Controllers
@@ -20,7 +19,7 @@ namespace Journey.Api.Controllers
         /// <param name="requestTrip">Informações da viagem</param>
         /// <returns>Viagem cadastrada</returns>
         [HttpPost]
-        [Route("adicionar-trip")]
+        [Route("create-trip")]
         [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         public IActionResult RegisterTrip([FromBody] RequestRegisterTripJson requestTrip)
@@ -37,7 +36,7 @@ namespace Journey.Api.Controllers
         /// </summary>
         /// <returns>Coleção de viagens</returns>
         [HttpGet]
-        [Route("consulta-trips")]
+        [Route("all-trips")]
         [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public IActionResult GetAllTrip()
@@ -55,7 +54,7 @@ namespace Journey.Api.Controllers
         /// <param name="id">Identificador da viagem</param>
         /// <returns>Informações da viagem</returns>
         [HttpGet]
-        [Route("consulta-trip/{id}")]
+        [Route("get-trip/{id}")]
         [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public IActionResult GetIdTrip([FromRoute] Guid id)
@@ -67,13 +66,26 @@ namespace Journey.Api.Controllers
             return Ok(result);
         }
 
+        [HttpPut]
+        [Route("update-trip/{id}")]
+        [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateTrip(Guid id, [FromBody] RequestRegisterTripJson requestTrip)
+        {
+            var useCase = new UpdateTripUseCase();
+
+            var response = useCase.Execute(id, requestTrip);
+
+            return Ok(response);
+        }
+
         /// <summary>
         /// Deletar uma viagem especifica
         /// </summary>
         /// <param name="id">Identificador da viagem</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route("deletar-trip/{id}")]
+        [Route("delete-trip/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public IActionResult DeleteIdTrip([FromRoute] Guid id)
