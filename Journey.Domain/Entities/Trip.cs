@@ -1,4 +1,4 @@
-﻿namespace Journey.Infrastructure.Entities;
+﻿namespace Journey.Domain.Entities;
 public class Trip
 {
     public Guid Id { get; set; } = Guid.NewGuid();

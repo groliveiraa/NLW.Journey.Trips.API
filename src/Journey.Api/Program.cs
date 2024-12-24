@@ -1,9 +1,12 @@
 using Journey.Api.Filters;
 using Microsoft.OpenApi.Models;
+using Journey.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDatabaseServices(builder.Configuration);
 builder.Services.AddControllers();
+builder.Services.AddDependencyInjection();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(d =>

@@ -1,4 +1,4 @@
-﻿namespace Journey.Infrastructure.Enums;
+﻿namespace Journey.Domain.Enums;
 public enum ActivityStatus
 {
     Pending = 0,

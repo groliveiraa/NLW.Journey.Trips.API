@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journey.Infrastructure", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{F6290B8B-3A84-4743-96D1-6BBD3B81FE44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Journey.Api", "src\Journey.Api\Journey.Api.csproj", "{A06EE223-358C-4E1A-BAD1-7063E7177816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journey.Api", "src\Journey.Api\Journey.Api.csproj", "{A06EE223-358C-4E1A-BAD1-7063E7177816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Journey.Domain", "Journey.Domain\Journey.Domain.csproj", "{F3320319-4A6B-400E-A937-CCDD3509E6CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{A06EE223-358C-4E1A-BAD1-7063E7177816}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A06EE223-358C-4E1A-BAD1-7063E7177816}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A06EE223-358C-4E1A-BAD1-7063E7177816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3320319-4A6B-400E-A937-CCDD3509E6CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3320319-4A6B-400E-A937-CCDD3509E6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3320319-4A6B-400E-A937-CCDD3509E6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3320319-4A6B-400E-A937-CCDD3509E6CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{7491156F-1F24-41A3-A3C0-F4D75B730FEF} = {317044D4-88AA-4326-AAE1-EF615552275E}
 		{F6290B8B-3A84-4743-96D1-6BBD3B81FE44} = {97631F20-FFF2-426B-AF03-4BCBB6D23A85}
 		{A06EE223-358C-4E1A-BAD1-7063E7177816} = {317044D4-88AA-4326-AAE1-EF615552275E}
+		{F3320319-4A6B-400E-A937-CCDD3509E6CD} = {317044D4-88AA-4326-AAE1-EF615552275E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9396E4F3-2451-4A7D-992A-8B2F4229159F}

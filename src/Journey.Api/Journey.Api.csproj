@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Journey.Application\Journey.Application.csproj" />
     <ProjectReference Include="..\Journey.Communication\Journey.Communication.csproj" />
     <ProjectReference Include="..\Journey.Exception\Journey.Exception.csproj" />
+    <ProjectReference Include="..\Journey.Infrastructure\Journey.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

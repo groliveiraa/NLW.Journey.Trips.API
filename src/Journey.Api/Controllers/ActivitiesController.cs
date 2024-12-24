@@ -1,13 +1,6 @@
-﻿using Journey.Application.UseCases.Activities.DeleteActivities;
-using Journey.Application.UseCases.Activities.GetAllActivities;
-using Journey.Application.UseCases.Activities.GetIdActivies;
-using Journey.Application.UseCases.Activities.Register;
-using Journey.Application.UseCases.Activities.UpdateActivities;
-using Journey.Application.UseCases.Trips.GetAllTrips;
-using Journey.Application.UseCases.Trips.Register;
+﻿using Journey.Application.Interfaces;
 using Journey.Communication.Requests;
 using Journey.Communication.Responses;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Journey.Api.Controllers
@@ -16,24 +9,11 @@ namespace Journey.Api.Controllers
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
-        /// <summary>
-        /// Cadastrar uma atividade
-        /// </summary>
-        /// <param name="tripId">Identificador da viagem</param>
-        /// <param name="requestActivity">Informações da atividade</param>
-        /// <returns>Atividade cadastrada</returns>
-        [HttpPost]
-        [Route("{tripId}/adicionar-activity")]
-        [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
-        public IActionResult RegisterActivity([FromRoute] Guid tripId ,[FromBody] RequestRegisterActivityJson requestActivity)
+        private readonly IActivityService _activityService;
+
+        public ActivitiesController(IActivityService activityService)
         {
-            var useCase = new RegisterActivityUseCase();
-
-            var response = useCase.Execute(tripId, requestActivity);
-
-            return Created(string.Empty, response);
+            _activityService = activityService;
         }
 
         /// <summary>
@@ -41,14 +21,12 @@ namespace Journey.Api.Controllers
         /// </summary>
         /// <returns>Coleção de atividades programadas</returns>
         [HttpGet]
-        [Route("consulta-activities")]
+        [Route("all-activities")]
         [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public IActionResult GetAllActivity()
         {
-            var useCase = new GetAllActivitiesUseCase();
-
-            var result = useCase.Execute();
+            var result = _activityService.GetAllActivities();
 
             return Ok(result);
         }
@@ -59,33 +37,47 @@ namespace Journey.Api.Controllers
         /// <param name="id">Identificador da atividade</param>
         /// <returns>Informações da atividade</returns>
         [HttpGet]
-        [Route("consulta-activity/{id}")]
+        [Route("get-activity/{id}")]
         [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public IActionResult GetIdActivity([FromRoute] Guid id)
         {
-            var useCase = new GetIdActivitiesUseCase();
-
-            var result = useCase.Execute(id);
+            var result = _activityService.GetActivityById(id);
 
             return Ok(result);
         }
 
         /// <summary>
-        /// Atualizar uma atividade especifica
+        /// Cadastrar uma atividade
+        /// </summary>
+        /// <param name="tripId">Identificador da viagem</param>
+        /// <param name="requestActivity">Informações da atividade</param>
+        /// <returns>Atividade cadastrada</returns>
+        [HttpPost]
+        [Route("{tripId}/create-activity")]
+        [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public IActionResult RegisterActivity([FromRoute] Guid tripId, [FromBody] RequestRegisterActivityJson requestActivity)
+        {
+            var response = _activityService.RegisterActivity(tripId, requestActivity);
+
+            return Created(string.Empty, response);
+        }
+
+        /// <summary>
+        /// Atualizar o status de uma atividade especifica
         /// </summary>
         /// <param name="tripId">Identificador da viagem</param>
         /// <param name="activityId">Identificador da atividade</param>
         /// <returns></returns>
         [HttpPut]
-        [Route("{tripId}/atualizar-activity/{activityId}")]
+        [Route("{tripId}/update-activity-status/{activityId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult UpdateActivity([FromRoute] Guid tripId, [FromRoute] Guid activityId)
         {
-            var useCase = new UpdateActivityUseCase();
-
-            useCase.Execute(tripId, activityId);
+            _activityService.UpdateActivityStatus(tripId, activityId);
 
             return NoContent();
         }
@@ -97,14 +89,12 @@ namespace Journey.Api.Controllers
         /// <param name="activityId">Identificador da atividade</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route("{tripId}/deletar-activity/{activityId}")]
+        [Route("{tripId}/delete-activity/{activityId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeleteActivity([FromRoute] Guid tripId, [FromRoute] Guid activityId)
         {
-            var useCase = new DeleteActivityUseCase();
-
-            useCase.Execute(tripId, activityId);
+            _activityService.DeleteActivity(tripId, activityId);
 
             return NoContent();
         }

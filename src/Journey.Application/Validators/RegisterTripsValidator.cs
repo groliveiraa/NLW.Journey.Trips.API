@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Journey.Application.UseCases.Trips.Register
+namespace Journey.Application.Validators
 {
     public class RegisterTripsValidator : AbstractValidator<RequestRegisterTripJson>
     {
