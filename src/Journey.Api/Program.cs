@@ -1,6 +1,7 @@
 using Journey.Api.Filters;
 using Microsoft.OpenApi.Models;
 using Journey.Infrastructure.Extensions;
+using Journey.Api.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,23 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddDependencyInjection();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(d =>
-{
-    d.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "NLWJourney.Trips.API",
-        Version = "v1",
-        Description = "Rocketseat - NLW Journey: API gerenciamento de viagens",
-        Contact = new OpenApiContact
-        {
-            Name = "NLW Journey - Rocketseat",          
-        }
-    });
-
-    var xmlFile = "Journey.API.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    d.IncludeXmlComments(xmlPath);
-});
+builder.Services.AddSwaggerConfiguration();
 
 builder.Services.AddMvc(config => config.Filters.Add(typeof(ExceptionFilter)));
 

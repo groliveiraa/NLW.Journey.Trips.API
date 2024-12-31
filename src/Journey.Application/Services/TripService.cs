@@ -54,7 +54,7 @@ namespace Journey.Application.Services
                     Id = a.Id,
                     Name = a.Name,
                     Date = a.Date,
-                    Status = (Communication.Enums.ActivityStatus)a.Status
+                    Status = a.Status
                 }).ToList()
             };
         }

@@ -1,4 +1,4 @@
-﻿using Journey.Communication.Enums;
+﻿using Journey.Domain.Enums;
 
 namespace Journey.Communication.Responses;
 public class ResponseActivityJson

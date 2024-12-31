@@ -33,7 +33,8 @@ namespace Journey.Application.Services
                 {
                     Id = a.Id,
                     Name = a.Name,
-                    Date = a.Date
+                    Date = a.Date,
+                    Status = a.Status
                 }).ToList()
             };
         }
@@ -51,7 +52,8 @@ namespace Journey.Application.Services
             {
                 Id = activity.Id,
                 Name = activity.Name,
-                Date = activity.Date
+                Date = activity.Date,
+                Status = activity.Status
             };
         }
 
@@ -75,7 +77,7 @@ namespace Journey.Application.Services
                 Id = activity.Id,
                 Name = activity.Name,
                 Date = activity.Date,
-                Status = (Communication.Enums.ActivityStatus)activity.Status,
+                Status = activity.Status,
             };
         }
 
