@@ -61,7 +61,7 @@ namespace Journey.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Atividade não encontrada..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Activity not found..
         /// </summary>
         public static string ATIVIDADE_NAO_ENCONTRADA {
             get {
@@ -70,7 +70,7 @@ namespace Journey.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a A Data selecionada está fora do periodo da viagem..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The selected date is outside the travel period..
         /// </summary>
         public static string DATA_FORA_PERIODO_VIAGEM {
             get {
@@ -79,7 +79,7 @@ namespace Journey.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a A Data da viagem deve ser posterior a hoje..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The travel date must be later than today..
         /// </summary>
         public static string DATA_INICIO_POSTERIOR_DATA_NOW {
             get {
@@ -88,7 +88,7 @@ namespace Journey.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a A Data de término da viagem deve ser igual ou posterior à data de início..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The travel end date must be the same as or later than the start date..
         /// </summary>
         public static string DATA_TERMINO_VIAGEM_POSTERIOR_DATA_INICIO {
             get {
@@ -97,7 +97,7 @@ namespace Journey.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Erro desconhecido.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Unknown error..
         /// </summary>
         public static string ERRO_DESCONHECIDO {
             get {
@@ -106,7 +106,7 @@ namespace Journey.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O Nome não pode ser vazio..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The name cannot be empty..
         /// </summary>
         public static string NOME_VAZIO {
             get {
@@ -115,7 +115,7 @@ namespace Journey.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Viagem não encontrada.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Trip not found..
         /// </summary>
         public static string VIAGEM_NAO_ENCONTRADA {
             get {

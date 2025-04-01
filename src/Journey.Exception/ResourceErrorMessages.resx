@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ATIVIDADE_NAO_ENCONTRADA" xml:space="preserve">
-    <value>Atividade não encontrada.</value>
+    <value>Activity not found.</value>
   </data>
   <data name="DATA_FORA_PERIODO_VIAGEM" xml:space="preserve">
-    <value>A Data selecionada está fora do periodo da viagem.</value>
+    <value>The selected date is outside the travel period.</value>
   </data>
   <data name="DATA_INICIO_POSTERIOR_DATA_NOW" xml:space="preserve">
-    <value>A Data da viagem deve ser posterior a hoje.</value>
+    <value>The travel date must be later than today.</value>
   </data>
   <data name="DATA_TERMINO_VIAGEM_POSTERIOR_DATA_INICIO" xml:space="preserve">
-    <value>A Data de término da viagem deve ser igual ou posterior à data de início.</value>
+    <value>The travel end date must be the same as or later than the start date.</value>
   </data>
   <data name="ERRO_DESCONHECIDO" xml:space="preserve">
-    <value>Erro desconhecido</value>
+    <value>Unknown error.</value>
   </data>
   <data name="NOME_VAZIO" xml:space="preserve">
-    <value>O Nome não pode ser vazio.</value>
+    <value>The name cannot be empty.</value>
   </data>
   <data name="VIAGEM_NAO_ENCONTRADA" xml:space="preserve">
-    <value>Viagem não encontrada</value>
+    <value>Trip not found.</value>
   </data>
 </root>
